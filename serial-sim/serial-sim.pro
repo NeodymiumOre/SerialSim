@@ -12,13 +12,18 @@ CONFIG += c++17
 
 SOURCES += \
     src/main.cpp \
-    src/mainwindow.cpp
+    src/mainwindow.cpp \
+    src/chartwindow.cpp \
+    src/chart.cpp
 
 HEADERS += \
-    inc/mainwindow.hpp
+    inc/mainwindow.hpp \
+    inc/chartwindow.hpp \
+    inc/chart.hpp
 
 FORMS += \
-    ui/mainwindow.ui
+    ui/mainwindow.ui \
+    ui/chartwindow.ui
 
 TRANSLATIONS += \
     serial-sim_en_150.ts
