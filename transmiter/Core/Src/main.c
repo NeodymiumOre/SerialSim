@@ -219,9 +219,11 @@ int main(void)
 		  is_MPU6050_ok = 0;
 
 	  MPU6050_Read_Accel();
-	  printf("Acceleration: \r\n X: %.2f, Y: %.2f, Z: %.2f.\r\n", Ax, Ay, Az);
+	  //printf("Acceleration: \r\n X: %.2f, Y: %.2f, Z: %.2f.\r\n", Ax, Ay, Az);
 	  MPU6050_Read_Gyro();
-	  printf("Orientation: \r\n X: %.2f, Y: %.2f, Z: %.2f.\r\n", Gx, Gy, Gz);
+	  //printf("Orientation: \r\n X: %.2f, Y: %.2f, Z: %.2f.\r\n", Gx, Gy, Gz);
+	  printf("%d %d 1 %.2f %.2f %.2f %.2f \r\n", is_MPU6050_init, is_MPU6050_ok, Ax, Ay, Gx, Gy);
+
 
 	  HAL_Delay(1000);
 

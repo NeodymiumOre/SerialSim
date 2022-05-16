@@ -24,18 +24,50 @@ void MainWindow::addToLogs(QString message)
 
 void MainWindow::readFromDevice()
 {
-    while(this->device->canReadLine())
-    {
-        QString line = this->device->readLine();
-        //this->addToLogs(line);
-        qDebug() << line;
+        while(this->device->canReadLine())
+        {
+            int init, work, butt;
+            float Ax, Ay, Gx, Gy;
+            bool is_data_ok = false;
 
-        QString terminator = "\r";
-        int pos = line.lastIndexOf(terminator);
-        qDebug() << line.left(pos);
+            QString line = this->device->readLine();
 
-        this->addToLogs(line.left(pos));
-    }
+            // reading control values on fixed positions
+            init = line.at(0).digitValue();
+            work = line.at(2).digitValue();
+            butt = line.at(4).digitValue();
+
+            if(init && work && butt)
+                is_data_ok = true;
+
+            // getting sensor values
+            if(is_data_ok)
+            {
+                // setting number of chars to read
+                //always x.xx = 4 + 1 for sign
+                //(if value is positive it reads " " and cuts it during conversion to float)
+                int char_num = 5;
+                // getting 5 chars from 5th index
+                Ax = line.mid(5, char_num).toFloat();
+                // getting index of next " " after 6th pos
+                int ay_pos = line.indexOf(" ", 6) + 1;
+                // getting 5 chars from next " " char
+                Ay = line.mid(ay_pos, 5).toFloat();
+                // getting index of next " " after ay_pos
+                int gx_pos = line.indexOf(" ", ay_pos) + 1;
+                // getting 5 chars from next " " char
+                Gx = line.mid(gx_pos, 5).toFloat();
+                // getting index of next " " after gx_pos
+                int gy_pos = line.indexOf(" ", gx_pos) + 1;
+                // getting 5 chars from next " " char
+                Gy = line.mid(gy_pos, 5).toFloat();
+            }
+            else
+            {
+                qDebug() << "Broken";
+            }
+
+        }
 }
 
 void MainWindow::on_pushButtonSearch_clicked()
