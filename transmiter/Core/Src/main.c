@@ -67,7 +67,11 @@ int16_t Gyro_Y_RAW = 0;
 int16_t Gyro_Z_RAW = 0;
 
 float Ax, Ay, Az, Gx, Gy, Gz;
-char buf[50];
+
+_Bool is_MPU6050_init = 0;
+_Bool is_MPU6050_ok = 0;
+_Bool is_Button_pressed = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -87,7 +91,20 @@ int _write(int file, unsigned char *ptr, int len)
 	return len;
 }
 
-int MPU6050_Init(void)
+_Bool is_MPU6050_working(void)
+{
+	uint8_t check;
+
+	HAL_I2C_Mem_Read(&hi2c1, MPU6050_ADDR, WHO_AM_I_REG, 1, &check, 1, 1000);
+	if(check == 0x68)
+		return 1;
+	else
+	{
+		return 0;
+	}
+}
+
+_Bool MPU6050_Init(void)
 {
 	uint8_t check;
 	uint8_t Data;
@@ -113,14 +130,10 @@ int MPU6050_Init(void)
 	    Data = 0x08;
 	    HAL_I2C_Mem_Write(&hi2c1, MPU6050_ADDR, ACCEL_CONFIG_REG, 1, &Data, 1, 1000);
 
-	    strcpy((char*)buf, "MPU6050 gotowy do pracy.\r\n");
-	    HAL_UART_Transmit(&huart2, buf, sizeof(buf), HAL_MAX_DELAY);
 	    return 1;
     }
 	else
 	{
-		strcpy((char*)buf, "Inicjalizacja sie nie powiodla.\r\n");
-		HAL_UART_Transmit(&huart2, buf, sizeof(buf), HAL_MAX_DELAY);
 		return 0;
 	}
 }
@@ -192,8 +205,7 @@ int main(void)
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 
-  int is_MPU_6050_ok;
-  is_MPU_6050_ok = MPU6050_Init();
+  is_MPU6050_init = MPU6050_Init();
 
   /* USER CODE END 2 */
 
@@ -201,23 +213,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if (is_MPU_6050_ok)
-	  {
-		  MPU6050_Read_Accel();
-		  sprintf(buf, "Acceleration: \r\n X: %.2f, Y: %.2f, Z: %.2f.\r\n", Ax, Ay, Az);
-		  HAL_UART_Transmit(&huart2, buf, sizeof(buf), HAL_MAX_DELAY);
-		  MPU6050_Read_Gyro();
-		  sprintf(buf, "Orientation: \r\n X: %.2f, Y: %.2f, Z: %.2f.\r\n", Gx, Gy, Gz);
-		  HAL_UART_Transmit(&huart2, buf, sizeof(buf), HAL_MAX_DELAY);
-
-		  printf("xd\r\n");
-	  }
+	  if(is_MPU6050_working())
+		  is_MPU6050_ok = 1;
 	  else
-	  {
-		  sprintf(buf, "");
-		  sprintf(buf, "Error: Nie dzialasz.\r\n");
-		  HAL_UART_Transmit(&huart2, buf, sizeof(buf), HAL_MAX_DELAY);
-	  }
+		  is_MPU6050_ok = 0;
+
+	  MPU6050_Read_Accel();
+	  printf("Acceleration: \r\n X: %.2f, Y: %.2f, Z: %.2f.\r\n", Ax, Ay, Az);
+	  MPU6050_Read_Gyro();
+	  printf("Orientation: \r\n X: %.2f, Y: %.2f, Z: %.2f.\r\n", Gx, Gy, Gz);
+
 	  HAL_Delay(1000);
 
     /* USER CODE END WHILE */
