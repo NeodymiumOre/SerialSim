@@ -31,7 +31,7 @@ private:
 
 private slots:
     void addToLogs(QString message);
-    //void readFromPort();
+    void readFromDevice();
 
     void on_pushButtonSearch_clicked();
     void on_pushButtonConnect_clicked();

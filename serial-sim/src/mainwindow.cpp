@@ -22,6 +22,22 @@ void MainWindow::addToLogs(QString message)
     ui->textEditLogs->append(currDateTime + "\t" + message);
 }
 
+void MainWindow::readFromDevice()
+{
+    while(this->device->canReadLine())
+    {
+        QString line = this->device->readLine();
+        //this->addToLogs(line);
+        qDebug() << line;
+
+        QString terminator = "\r";
+        int pos = line.lastIndexOf(terminator);
+        qDebug() << line.left(pos);
+
+        this->addToLogs(line.left(pos));
+    }
+}
+
 void MainWindow::on_pushButtonSearch_clicked()
 {
     ui->comboBoxDevices->clear();
@@ -58,13 +74,14 @@ void MainWindow::on_pushButtonConnect_clicked()
 
     if(device->open(QSerialPort::ReadWrite))
     {
-        this->device->setBaudRate(QSerialPort::Baud9600);
+        this->device->setBaudRate(QSerialPort::Baud115200);
         this->device->setParity(QSerialPort::NoParity);
         this->device->setDataBits(QSerialPort::Data8);
         this->device->setStopBits(QSerialPort::OneStop);
         this->device->setFlowControl(QSerialPort::NoFlowControl);
 
         this->addToLogs("Połączono z urządzeniem " + portName);
+        connect(this->device, SIGNAL(readyRead()), this, SLOT(readFromDevice()));
     }
     else
     {
