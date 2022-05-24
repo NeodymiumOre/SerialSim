@@ -17,7 +17,16 @@
    <item>
     <layout class="QVBoxLayout" name="vLCharts">
      <item>
-      <widget class="QChartView" name="graphicsView"/>
+      <widget class="QChartView" name="graphicsViewAx"/>
+     </item>
+     <item>
+      <widget class="QChartView" name="graphicsViewAy"/>
+     </item>
+     <item>
+      <widget class="QChartView" name="graphicsViewGx"/>
+     </item>
+     <item>
+      <widget class="QChartView" name="graphicsViewGy"/>
      </item>
     </layout>
    </item>

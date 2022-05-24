@@ -28,10 +28,21 @@ var menudata={children:[
 {text:"Lista przestrzeni nazw",url:"namespaces.html"}]},
 {text:"Klasy",url:"annotated.html",children:[
 {text:"Lista klas",url:"annotated.html"},
-{text:"Indeks klas",url:"classes.html"},
 {text:"Hierarchia klas",url:"inherits.html"},
 {text:"Składowe klas",url:"functions.html",children:[
-{text:"Wszystko",url:"functions.html"},
+{text:"Wszystko",url:"functions.html",children:[
+{text:"a",url:"functions.html#index_a"},
+{text:"b",url:"functions.html#index_b"},
+{text:"c",url:"functions.html#index_c"},
+{text:"d",url:"functions.html#index_d"},
+{text:"g",url:"functions.html#index_g"},
+{text:"h",url:"functions.html#index_h"},
+{text:"m",url:"functions.html#index_m"},
+{text:"o",url:"functions.html#index_o"},
+{text:"r",url:"functions.html#index_r"},
+{text:"s",url:"functions.html#index_s"},
+{text:"u",url:"functions.html#index_u"},
+{text:"~",url:"functions.html#index__7E"}]},
 {text:"Funkcje",url:"functions_func.html"},
 {text:"Zmienne",url:"functions_vars.html"}]}]},
 {text:"Pliki",url:"files.html",children:[

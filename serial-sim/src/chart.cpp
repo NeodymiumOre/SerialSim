@@ -44,7 +44,8 @@ Chart::Chart(QGraphicsItem *parent, Qt::WindowFlags wFlags):
     m_y(1)
 {
     QObject::connect(&m_timer, &QTimer::timeout, this, &Chart::handleTimeout);
-    m_timer.setInterval(1000);
+    // setting time between data points drawing
+    m_timer.setInterval(500);
 
     m_series = new QSplineSeries(this);
     QPen green(Qt::red);
@@ -74,10 +75,15 @@ void Chart::handleTimeout()
 {
     qreal x = plotArea().width() / m_axisX->tickCount();
     qreal y = (m_axisX->max() - m_axisX->min()) / m_axisX->tickCount();
+    // shifts data line
     m_x += y;
+    // choosing new random value
     m_y = QRandomGenerator::global()->bounded(5) - 2.5;
+    // adding new value to the plot
     m_series->append(m_x, m_y);
+    // shifts the x axis
     scroll(x, 0);
+    // idk what that is
     if (m_x == 100)
         m_timer.stop();
 }

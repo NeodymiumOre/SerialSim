@@ -27,6 +27,5 @@ public slots:
 
 };
 
-
 #endif // CHARTWINDOW_HPP
 

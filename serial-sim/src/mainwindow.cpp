@@ -61,6 +61,8 @@ void MainWindow::readFromDevice()
                 int gy_pos = line.indexOf(" ", gx_pos) + 1;
                 // getting 5 chars from next " " char
                 Gy = line.mid(gy_pos, 5).toFloat();
+
+                qDebug() << Ax << Ay << Gx << Gy;
             }
             else
             {
