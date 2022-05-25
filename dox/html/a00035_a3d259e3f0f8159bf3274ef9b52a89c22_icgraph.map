@@ -1,4 +1,4 @@
 <map id="MainWindow::readFromDevice" name="MainWindow::readFromDevice">
-<area shape="rect" id="node1" title=" " alt="" coords="264,13,484,39"/>
-<area shape="rect" id="node2" href="$a00035.html#a74bf7ec51582db3d2d98265b66afc0cc" title=" " alt="" coords="5,5,216,47"/>
+<area shape="rect" id="node1" title="Metoda odczytująca dane z portu szeregowego." alt="" coords="264,13,484,39"/>
+<area shape="rect" id="node2" href="$a00035.html#a74bf7ec51582db3d2d98265b66afc0cc" title="Metoda otwierająca wybrany port szeregowy." alt="" coords="5,5,216,47"/>
 </map>

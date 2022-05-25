@@ -14,11 +14,13 @@ SOURCES += \
     src/main.cpp \
     src/mainwindow.cpp \
     src/chartwindow.cpp \
+    src/vehicle.cpp \
     src/chart.cpp
 
 HEADERS += \
     inc/mainwindow.hpp \
     inc/chartwindow.hpp \
+    inc/vehicle.hpp \
     inc/chart.hpp
 
 FORMS += \

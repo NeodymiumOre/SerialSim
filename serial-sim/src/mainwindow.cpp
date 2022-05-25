@@ -9,6 +9,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     // instead of: delete device;
     this->device = new QSerialPort(this);
+
+    //scene setup
+    this->scene = new QGraphicsScene(this);
+    ui->graphicsViewPlane->setScene(scene);
+
+    // adding vehicle to the scene
+    this->vehicle = new Vehicle();
+    this->scene->addItem(this->vehicle);
 }
 
 MainWindow::~MainWindow()
@@ -70,6 +78,11 @@ void MainWindow::readFromDevice()
             }
 
         }
+}
+
+void MainWindow::sceneSetup()
+{
+    qDebug() << "xd";
 }
 
 void MainWindow::on_pushButtonSearch_clicked()
@@ -141,8 +154,7 @@ void MainWindow::on_pushButtonDisconnect_clicked()
 
 void MainWindow::on_pushButtonStart_clicked()
 {
-    qDebug() << "xd";
-    //this->vehicleSetup();
+    this->sceneSetup();
 }
 
 void MainWindow::on_pushButtonCharts_clicked()
