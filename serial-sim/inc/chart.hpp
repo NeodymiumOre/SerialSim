@@ -25,7 +25,6 @@ QT_END_NAMESPACE
 QT_USE_NAMESPACE
 
 /*!
- * \file
  * \brief Definicja klasy Chart
  *
  * Klasa Chart jest odpowiedzialna za implementację wykresów.

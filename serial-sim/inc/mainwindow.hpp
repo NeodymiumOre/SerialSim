@@ -55,6 +55,7 @@ public:
     ~MainWindow();
 
 private:
+
     /*!
      * \brief Interfejs graficzny okna głównego programu
      *

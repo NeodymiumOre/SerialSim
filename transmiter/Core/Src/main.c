@@ -45,6 +45,11 @@
 #define ACCEL_XOUT_H_REG 0x3B
 #define TEMP_OUT_H_REG 0x41
 #define GYRO_XOUT_H_REG 0x43
+
+// time intervals for events
+#define BUTTON_EVENT 50
+#define PRINT_EVENT 100
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -70,7 +75,10 @@ float Ax, Ay, Az, Gx, Gy, Gz;
 
 _Bool is_MPU6050_init = 0;
 _Bool is_MPU6050_ok = 0;
-_Bool is_Button_pressed = 0;
+_Bool is_button_pressed = 0;
+
+uint32_t last_button_event = 0;
+uint32_t last_print_event = 0;
 
 /* USER CODE END PV */
 
@@ -222,10 +230,29 @@ int main(void)
 	  //printf("Acceleration: \r\n X: %.2f, Y: %.2f, Z: %.2f.\r\n", Ax, Ay, Az);
 	  MPU6050_Read_Gyro();
 	  //printf("Orientation: \r\n X: %.2f, Y: %.2f, Z: %.2f.\r\n", Gx, Gy, Gz);
-	  printf("%d %d 1 %.2f %.2f %.2f %.2f \r\n", is_MPU6050_init, is_MPU6050_ok, Ax, Ay, Gx, Gy);
 
+	  // checking if button is pressed
+	  if(!HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin))
+	  {
+		  is_button_pressed = 1;
+		  last_button_event = HAL_GetTick();
+	  }
+	  if(!HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) && HAL_GetTick() - last_button_event >= BUTTON_EVENT)
+	  {
+		  is_button_pressed = 1;
+	  }
+	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) && HAL_GetTick() - last_button_event >= BUTTON_EVENT)
+	  {
+	  		  is_button_pressed = 0;
+	  }
 
-	  HAL_Delay(1000);
+	  // sending data over UART every 200ms
+	  if(HAL_GetTick() - last_print_event >= PRINT_EVENT)
+	  {
+		  last_print_event = HAL_GetTick();
+		  printf("%d %d %d %.2f %.2f \r\n", is_MPU6050_init, is_MPU6050_ok, is_button_pressed, Gy, Gz);
+	  }
+
 
     /* USER CODE END WHILE */
 
