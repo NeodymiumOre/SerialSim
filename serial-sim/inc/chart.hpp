@@ -46,7 +46,8 @@ public:
      * \param[in] parent - wskaźnik na obiekt klsy rodzica; domyślnie nullptr
      * \param[in] wFlags - lista flag typu WindowFlags
      */
-    Chart(Qt::GlobalColor color = Qt::green, QGraphicsItem *parent = nullptr, Qt::WindowFlags wFlags = {});
+    Chart(qreal *data, Qt::GlobalColor color = Qt::green,
+          QGraphicsItem *parent = nullptr, Qt::WindowFlags wFlags = {});
 
     /*!
      * \brief Destruktor obiektu klasy Chart
@@ -119,6 +120,8 @@ private:
      * Określa największą współrzędną y rysowaną na osi x w chwili t=0
      */
     qreal y_range;
+
+    qreal *data;
 };
 
 #endif /* CHART_H */

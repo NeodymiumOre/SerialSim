@@ -1,6 +1,7 @@
 #include "chart.hpp"
 
-Chart::Chart(Qt::GlobalColor color, QGraphicsItem *parent, Qt::WindowFlags wFlags):
+Chart::Chart(qreal *data, Qt::GlobalColor color,
+             QGraphicsItem *parent, Qt::WindowFlags wFlags):
     QChart(QChart::ChartTypeCartesian, parent, wFlags),
     m_series(0),
     m_axisX(new QValueAxis()),
@@ -8,7 +9,8 @@ Chart::Chart(Qt::GlobalColor color, QGraphicsItem *parent, Qt::WindowFlags wFlag
     m_x(1),
     m_y(5),
     x_range(10),
-    y_range(10)
+    y_range(10),
+    data(data)
 {
     // sender, signal, receiver, slot
     // when timer times out, handleTimeout slot is activated
@@ -67,7 +69,7 @@ void Chart::handleTimeout()
     // choosing new random value
     m_y = QRandomGenerator::global()->bounded(5);
     // adding new value to the plot
-    m_series->append(m_x, m_y);
+    m_series->append(m_x, *data);
 
     // shifts the x axis if it is bigger then initial range
     if(m_x > x_range) scroll(x, 0);

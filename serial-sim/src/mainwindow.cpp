@@ -35,7 +35,7 @@ void MainWindow::readFromDevice()
         while(this->device->canReadLine())
         {
             int init, work, butt;
-            float Ax, Ay, Gx, Gy;
+            qreal Gy, Gz;
             bool is_data_ok = false;
 
             QString line = this->device->readLine();
@@ -56,28 +56,27 @@ void MainWindow::readFromDevice()
                 //(if value is positive it reads " " and cuts it during conversion to float)
                 int char_num = 5;
                 // getting 5 chars from 5th index
-                Ax = line.mid(5, char_num).toFloat();
+                Gy = line.mid(5, char_num).toFloat();
                 // getting index of next " " after 6th pos
-                int ay_pos = line.indexOf(" ", 6) + 1;
+                int gy_pos = line.indexOf(" ", 6) + 1;
                 // getting 5 chars from next " " char
-                Ay = line.mid(ay_pos, 5).toFloat();
-                // getting index of next " " after ay_pos
-                int gx_pos = line.indexOf(" ", ay_pos) + 1;
-                // getting 5 chars from next " " char
-                Gx = line.mid(gx_pos, 5).toFloat();
-                // getting index of next " " after gx_pos
-                int gy_pos = line.indexOf(" ", gx_pos) + 1;
-                // getting 5 chars from next " " char
-                Gy = line.mid(gy_pos, 5).toFloat();
+                Gz = line.mid(gy_pos, 5).toFloat();
 
-                qDebug() << Ax << Ay << Gx << Gy;
+                this->Gy_raw = Gy;
+                this->Gz_raw = Gz;
+                this->analyzeData();
             }
             else
             {
-                qDebug() << "Broken";
+                qDebug() << "Please press button or check connection lines!";
             }
 
         }
+}
+
+void MainWindow::analyzeData()
+{
+    qDebug() << this->Gy_raw << this->Gz_raw;
 }
 
 void MainWindow::on_pushButtonSearch_clicked()
@@ -154,7 +153,7 @@ void MainWindow::on_pushButtonReset_clicked()
 
 void MainWindow::on_pushButtonCharts_clicked()
 {
-    ChartWindow GyrXWin(nullptr);
+    ChartWindow GyrXWin(&this->Gy_raw, &this->Gz_raw, nullptr);
     GyrXWin.setModal(true);
 
     GyrXWin.beginPlot();

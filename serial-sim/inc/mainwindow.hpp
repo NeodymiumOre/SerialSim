@@ -54,6 +54,24 @@ public:
      */
     ~MainWindow();
 
+    /*!
+     * \brief Wartość Gy odczytana prosto z urządzenia
+     *
+     * Przechowuje surową wartość Gy do odczytu dla metody \link Chart::handle::timeout \endlink
+     */
+    qreal Gy_raw;
+
+    /*!
+     * \brief Wartość Gz odczytana prosto z urządzenia
+     *
+     * Przechowuje surową wartość Gz do odczytu dla metody \link Chart::handle::timeout \endlink
+     */
+    qreal Gz_raw;
+
+    qreal v;
+    qreal x;
+    qreal y;
+
 private:
 
     /*!
@@ -105,6 +123,14 @@ private slots:
      *  wyłuskuje potrzebne wartości i przekazuje je do wyświetlenia oraz dalszej analizy.
      */
     void readFromDevice();
+
+    /*!
+     * \brief Metoda przeliczająca dane pomiarowe na prędkość oraz położenie pojazdu.
+     *
+     * Dokonuje przekształcenia odczytanych danych z żyroskopu na wartości prędkości
+     * \link v \endlink, oraz położenie (\link x \endlink, \link y \endlink).
+     */
+    void analyzeData();
 
     /*!
      * \brief Metoda wyszukująca podłączone urządzenia w portch szeregowych.

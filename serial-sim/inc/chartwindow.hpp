@@ -38,7 +38,7 @@ public:
      *
      * \param[in] parent - wskaźnik na obiekt klsy rodzica; domyślnie nullptr
      */
-    explicit ChartWindow(QWidget *parent = nullptr);
+    explicit ChartWindow(qreal *Gy_raw, qreal *Gz_raw, QWidget *parent = nullptr);
 
     /*!
      * \brief Destruktor obiektu klasy ChartWindow
@@ -62,7 +62,9 @@ private:
      * Obiekty reprezentują wykresy danych przychodzących z urządzenia
      * zewnętrznego. Obiektów jest tyle ile różnych danych.
      */
-    Chart *GyrX, *GyrY, *AccX, *AccY;
+    Chart *GyrY, *GyrZ;
+
+    qreal *Gy_raw, *Gz_raw;
 
 public slots:
 
