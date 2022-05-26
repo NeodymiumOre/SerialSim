@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SerialSim: Dokumentacja pliku /home/maciej/Projects/SerialSim/serial-sim/inc/chartwindow.hpp</title>
+<title>SerialSim: Dokumentacja pliku /home/maciej/Projects/SerialSim/serial-sim/inc/vehicle.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -60,39 +60,41 @@ $(document).ready(function(){initNavTree('a00005.html',''); initResizable(); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Komponenty</a> &#124;
-<a href="#namespaces">Przestrzenie nazw</a>  </div>
-  <div class="headertitle"><div class="title">Dokumentacja pliku chartwindow.hpp</div></div>
+<a href="#nested-classes">Komponenty</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja pliku vehicle.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;QDialog&gt;</code><br />
-<code>#include &lt;QtCharts&gt;</code><br />
-<code>#include &lt;QDebug&gt;</code><br />
-<code>#include &quot;<a class="el" href="a00002_source.html">chart.hpp</a>&quot;</code><br />
+
+<p>Definicja klasy <a class="el" href="a00045.html" title="Definicja klasy Vehicle.">Vehicle</a>.  
+<a href="#details">Więcej...</a></p>
+<div class="textblock"><code>#include &lt;QGraphicsItem&gt;</code><br />
+<code>#include &lt;QGraphicsScene&gt;</code><br />
+<code>#include &lt;QPainter&gt;</code><br />
+<code>#include &lt;QStyleOption&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Wykres zależności załączania dla chartwindow.hpp:</div>
+Wykres zależności załączania dla vehicle.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00006.png" border="0" usemap="#a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2chartwindow_8hpp" alt=""/></div>
-<map name="a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2chartwindow_8hpp" id="a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2chartwindow_8hpp">
-<area shape="rect" title=" " alt="" coords="111,5,278,61"/>
-<area shape="rect" title=" " alt="" coords="5,109,80,136"/>
-<area shape="rect" title=" " alt="" coords="105,109,183,136"/>
-<area shape="rect" title=" " alt="" coords="208,109,283,136"/>
-<area shape="rect" href="a00002.html" title=" " alt="" coords="307,109,389,136"/>
-<area shape="rect" title=" " alt="" coords="268,184,335,211"/>
-<area shape="rect" title=" " alt="" coords="359,184,430,211"/>
+<div class="center"><img src="a00006.png" border="0" usemap="#a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2vehicle_8hpp" alt=""/></div>
+<map name="a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2vehicle_8hpp" id="a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2vehicle_8hpp">
+<area shape="rect" title="Definicja klasy Vehicle." alt="" coords="256,5,423,61"/>
+<area shape="rect" title=" " alt="" coords="5,109,124,136"/>
+<area shape="rect" title=" " alt="" coords="149,109,277,136"/>
+<area shape="rect" title=" " alt="" coords="301,109,378,136"/>
+<area shape="rect" title=" " alt="" coords="403,109,511,136"/>
+<area shape="rect" title=" " alt="" coords="535,109,603,136"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten plik:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00007.png" border="0" usemap="#a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2chartwindow_8hppdep" alt=""/></div>
-<map name="a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2chartwindow_8hppdep" id="a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2chartwindow_8hppdep">
-<area shape="rect" title=" " alt="" coords="195,5,361,61"/>
-<area shape="rect" href="a00008.html" title="Definicja klasy MainWindow." alt="" coords="100,109,267,165"/>
-<area shape="rect" href="a00017.html" title=" " alt="" coords="291,109,457,165"/>
-<area shape="rect" href="a00011.html" title=" " alt="" coords="5,213,172,269"/>
-<area shape="rect" href="a00014.html" title=" " alt="" coords="196,213,363,269"/>
+<div class="center"><img src="a00007.png" border="0" usemap="#a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2vehicle_8hppdep" alt=""/></div>
+<map name="a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2vehicle_8hppdep" id="a_2home_2maciej_2_projects_2_serial_sim_2serial-sim_2inc_2vehicle_8hppdep">
+<area shape="rect" title="Definicja klasy Vehicle." alt="" coords="195,5,361,61"/>
+<area shape="rect" href="a00011.html" title="Definicja klasy MainWindow." alt="" coords="100,109,267,165"/>
+<area shape="rect" href="a00026.html" title=" " alt="" coords="291,109,457,165"/>
+<area shape="rect" href="a00014.html" title=" " alt="" coords="5,213,172,269"/>
+<area shape="rect" href="a00017.html" title=" " alt="" coords="196,213,363,269"/>
 </map>
 </div>
 </div>
@@ -100,20 +102,20 @@ Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Komponenty</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00031.html">ChartWindow</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
-Przestrzenie nazw</h2></td></tr>
-<tr class="memitem:a00023"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html">Ui</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00045.html">Vehicle</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definicja klasy <a class="el" href="a00045.html" title="Definicja klasy Vehicle.">Vehicle</a>.  <a href="a00045.html#details">Więcej...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p >Plik zawiera definicję klasy <a class="el" href="a00045.html" title="Definicja klasy Vehicle.">Vehicle</a>, która reprezentuje pojazd oraz zawiera wszystkie metody potrzebne do symulowania jego ruchu w oknie symulacji. </p>
+
+<p class="definition">Definicja w pliku <a class="el" href="a00005_source.html">vehicle.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_c6b7d079639c12219240c44dd9252ce4.html">maciej</a></li><li class="navelem"><a class="el" href="dir_405157e194464d873a2b3f2bbe150d22.html">Projects</a></li><li class="navelem"><a class="el" href="dir_6d522564296641ed022fd4386eb3fcc6.html">SerialSim</a></li><li class="navelem"><a class="el" href="dir_854d751a9764eb026b41dd1fa4dd6364.html">serial-sim</a></li><li class="navelem"><a class="el" href="dir_1f433a514157fddd1172eff08cc9d7f4.html">inc</a></li><li class="navelem"><a class="el" href="a00005.html">chartwindow.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_c6b7d079639c12219240c44dd9252ce4.html">maciej</a></li><li class="navelem"><a class="el" href="dir_405157e194464d873a2b3f2bbe150d22.html">Projects</a></li><li class="navelem"><a class="el" href="dir_6d522564296641ed022fd4386eb3fcc6.html">SerialSim</a></li><li class="navelem"><a class="el" href="dir_854d751a9764eb026b41dd1fa4dd6364.html">serial-sim</a></li><li class="navelem"><a class="el" href="dir_1f433a514157fddd1172eff08cc9d7f4.html">inc</a></li><li class="navelem"><a class="el" href="a00005.html">vehicle.hpp</a></li>
     <li class="footer">Wygenerowano przez <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>

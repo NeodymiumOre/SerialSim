@@ -14,7 +14,7 @@ Vehicle::Vehicle()
     _RBWheel.setRect(20, -30, 20, 10);
 }
 
-Vehicle::Vehicle() {}
+Vehicle::~Vehicle() {}
 
 QRectF Vehicle::boundingRect() const {}
 

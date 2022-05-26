@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SerialSim: Plik źródłowy /home/maciej/Projects/SerialSim/serial-sim/inc/chartwindow.hpp</title>
+<title>SerialSim: Plik źródłowy /home/maciej/Projects/SerialSim/serial-sim/inc/vehicle.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,58 +59,57 @@ $(document).ready(function(){initNavTree('a00005_source.html',''); initResizable
 </script>
 <div id="doc-content">
 <div class="header">
-  <div class="headertitle"><div class="title">chartwindow.hpp</div></div>
+  <div class="headertitle"><div class="title">vehicle.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="a00005.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef CHARTWINDOW_HPP</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CHARTWINDOW_HPP</span></div>
+<a href="a00005.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef VEHICLE_HPP</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define VEHICLE_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;QDialog&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;QtCharts&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;QDebug&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="a00002.html">chart.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>QT_BEGIN_NAMESPACE</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="a00023.html">   10</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00023.html">Ui</a> { <span class="keyword">class </span><a class="code hl_class" href="a00031.html">ChartWindow</a>; }</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>QT_END_NAMESPACE</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="a00031.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="a00031.html">ChartWindow</a> : <span class="keyword">public</span> QDialog</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    Q_OBJECT</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="a00031.html#a898138e91e25646ddbcce42ebe88d3d5">ChartWindow</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_function" href="a00031.html#a9714c04a78085f4a64559008c5fe39e9">~ChartWindow</a>();</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="a00031.html#aa5b7848a04ff1432fe842398ab54dae9">   22</a></span>    Ui::ChartWindow *<a class="code hl_variable" href="a00031.html#aa5b7848a04ff1432fe842398ab54dae9">ui</a>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="a00031.html#a8482d5707c01f469373688da27b29395">   23</a></span>    <a class="code hl_class" href="a00027.html">Chart</a> *<a class="code hl_variable" href="a00031.html#a88a2e4bb006a451612a181e5fe1a73fa">GyrX</a>, *<a class="code hl_variable" href="a00031.html#af5675b96c57808d0b101fb0d292e7d8b">GyrY</a>, *<a class="code hl_variable" href="a00031.html#a8482d5707c01f469373688da27b29395">AccX</a>, *<a class="code hl_variable" href="a00031.html#a2aba3b31ed0870c24dc42e207a7958fa">AccY</a>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span> slots:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="a00031.html#a1bc0397efc2f545b9c71da4047c7804c">beginPlot</a>();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>};</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;QGraphicsItem&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;QGraphicsScene&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;QPainter&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;QStyleOption&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="a00045.html">   25</a></span><span class="keyword">class </span><a class="code hl_class" href="a00045.html">Vehicle</a> : <span class="keyword">public</span> QGraphicsItem</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_function" href="a00045.html#abaad8187d9f2ede4fb8ea18de0a6764c">Vehicle</a>();</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif </span><span class="comment">// CHARTWINDOW_HPP</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="a00045.html#a61ab140c755b8e0e824d54117cf4546f">~Vehicle</a>();</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="ttc" id="aa00002_html"><div class="ttname"><a href="a00002.html">chart.hpp</a></div></div>
-<div class="ttc" id="aa00023_html"><div class="ttname"><a href="a00023.html">Ui</a></div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00010">chartwindow.hpp:10</a></div></div>
-<div class="ttc" id="aa00027_html"><div class="ttname"><a href="a00027.html">Chart</a></div><div class="ttdef"><b>Definition:</b> <a href="a00002_source.html#l00014">chart.hpp:15</a></div></div>
-<div class="ttc" id="aa00031_html"><div class="ttname"><a href="a00031.html">ChartWindow</a></div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00013">chartwindow.hpp:14</a></div></div>
-<div class="ttc" id="aa00031_html_a1bc0397efc2f545b9c71da4047c7804c"><div class="ttname"><a href="a00031.html#a1bc0397efc2f545b9c71da4047c7804c">ChartWindow::beginPlot</a></div><div class="ttdeci">void beginPlot()</div><div class="ttdef"><b>Definition:</b> <a href="a00017_source.html#l00016">chartwindow.cpp:16</a></div></div>
-<div class="ttc" id="aa00031_html_a2aba3b31ed0870c24dc42e207a7958fa"><div class="ttname"><a href="a00031.html#a2aba3b31ed0870c24dc42e207a7958fa">ChartWindow::AccY</a></div><div class="ttdeci">Chart * AccY</div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00023">chartwindow.hpp:23</a></div></div>
-<div class="ttc" id="aa00031_html_a8482d5707c01f469373688da27b29395"><div class="ttname"><a href="a00031.html#a8482d5707c01f469373688da27b29395">ChartWindow::AccX</a></div><div class="ttdeci">Chart * AccX</div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00023">chartwindow.hpp:23</a></div></div>
-<div class="ttc" id="aa00031_html_a88a2e4bb006a451612a181e5fe1a73fa"><div class="ttname"><a href="a00031.html#a88a2e4bb006a451612a181e5fe1a73fa">ChartWindow::GyrX</a></div><div class="ttdeci">Chart * GyrX</div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00023">chartwindow.hpp:23</a></div></div>
-<div class="ttc" id="aa00031_html_a898138e91e25646ddbcce42ebe88d3d5"><div class="ttname"><a href="a00031.html#a898138e91e25646ddbcce42ebe88d3d5">ChartWindow::ChartWindow</a></div><div class="ttdeci">ChartWindow(QWidget *parent=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="a00017_source.html#l00004">chartwindow.cpp:4</a></div></div>
-<div class="ttc" id="aa00031_html_a9714c04a78085f4a64559008c5fe39e9"><div class="ttname"><a href="a00031.html#a9714c04a78085f4a64559008c5fe39e9">ChartWindow::~ChartWindow</a></div><div class="ttdeci">~ChartWindow()</div><div class="ttdef"><b>Definition:</b> <a href="a00017_source.html#l00011">chartwindow.cpp:11</a></div></div>
-<div class="ttc" id="aa00031_html_aa5b7848a04ff1432fe842398ab54dae9"><div class="ttname"><a href="a00031.html#aa5b7848a04ff1432fe842398ab54dae9">ChartWindow::ui</a></div><div class="ttdeci">Ui::ChartWindow * ui</div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00022">chartwindow.hpp:22</a></div></div>
-<div class="ttc" id="aa00031_html_af5675b96c57808d0b101fb0d292e7d8b"><div class="ttname"><a href="a00031.html#af5675b96c57808d0b101fb0d292e7d8b">ChartWindow::GyrY</a></div><div class="ttdeci">Chart * GyrY</div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00023">chartwindow.hpp:23</a></div></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    QRectF <a class="code hl_function" href="a00045.html#a96a111041fb438699f8581106d1960dd">boundingRect</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    QPainterPath <a class="code hl_function" href="a00045.html#abd0805215ec645a50fbe4b56871a0060">shape</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="a00045.html#a543c82a9d13b1ba743fe15c25878fa20">paint</a>(QPainter *painter, <span class="keyword">const</span> QStyleOptionGraphicsItem *option, QWidget *widget) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>   <span class="comment">// void advance(int step) override;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="a00045.html#abfc1d3799648f8580c382026cb149c0a">   42</a></span>    QRectF <a class="code hl_variable" href="a00045.html#abfc1d3799648f8580c382026cb149c0a">_Body</a>, <a class="code hl_variable" href="a00045.html#ac3b5ab4b7f102d1be8997bb8a2002d7f">_LUWheel</a>, <a class="code hl_variable" href="a00045.html#a7eae77d18db353392df2d4935f47a5cd">_LBWheel</a>, <a class="code hl_variable" href="a00045.html#ad6b17cdc1bd5e28fa14b28f2b1b902eb">_RUWheel</a>, <a class="code hl_variable" href="a00045.html#a66413cf1a029cea14dbce93a7dc0600a">_RBWheel</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif </span><span class="comment">// VEHICLE_HPP</span></div>
+<div class="ttc" id="aa00045_html"><div class="ttname"><a href="a00045.html">Vehicle</a></div><div class="ttdoc">Definicja klasy Vehicle.</div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00025">vehicle.hpp:26</a></div></div>
+<div class="ttc" id="aa00045_html_a543c82a9d13b1ba743fe15c25878fa20"><div class="ttname"><a href="a00045.html#a543c82a9d13b1ba743fe15c25878fa20">Vehicle::paint</a></div><div class="ttdeci">void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override</div><div class="ttdef"><b>Definition:</b> <a href="a00026_source.html#l00023">vehicle.cpp:23</a></div></div>
+<div class="ttc" id="aa00045_html_a61ab140c755b8e0e824d54117cf4546f"><div class="ttname"><a href="a00045.html#a61ab140c755b8e0e824d54117cf4546f">Vehicle::~Vehicle</a></div><div class="ttdeci">virtual ~Vehicle()</div><div class="ttdef"><b>Definition:</b> <a href="a00026_source.html#l00017">vehicle.cpp:17</a></div></div>
+<div class="ttc" id="aa00045_html_a66413cf1a029cea14dbce93a7dc0600a"><div class="ttname"><a href="a00045.html#a66413cf1a029cea14dbce93a7dc0600a">Vehicle::_RBWheel</a></div><div class="ttdeci">QRectF _RBWheel</div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00042">vehicle.hpp:42</a></div></div>
+<div class="ttc" id="aa00045_html_a7eae77d18db353392df2d4935f47a5cd"><div class="ttname"><a href="a00045.html#a7eae77d18db353392df2d4935f47a5cd">Vehicle::_LBWheel</a></div><div class="ttdeci">QRectF _LBWheel</div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00042">vehicle.hpp:42</a></div></div>
+<div class="ttc" id="aa00045_html_a96a111041fb438699f8581106d1960dd"><div class="ttname"><a href="a00045.html#a96a111041fb438699f8581106d1960dd">Vehicle::boundingRect</a></div><div class="ttdeci">QRectF boundingRect() const override</div><div class="ttdef"><b>Definition:</b> <a href="a00026_source.html#l00019">vehicle.cpp:19</a></div></div>
+<div class="ttc" id="aa00045_html_abaad8187d9f2ede4fb8ea18de0a6764c"><div class="ttname"><a href="a00045.html#abaad8187d9f2ede4fb8ea18de0a6764c">Vehicle::Vehicle</a></div><div class="ttdeci">Vehicle()</div><div class="ttdef"><b>Definition:</b> <a href="a00026_source.html#l00006">vehicle.cpp:6</a></div></div>
+<div class="ttc" id="aa00045_html_abd0805215ec645a50fbe4b56871a0060"><div class="ttname"><a href="a00045.html#abd0805215ec645a50fbe4b56871a0060">Vehicle::shape</a></div><div class="ttdeci">QPainterPath shape() const override</div><div class="ttdef"><b>Definition:</b> <a href="a00026_source.html#l00021">vehicle.cpp:21</a></div></div>
+<div class="ttc" id="aa00045_html_abfc1d3799648f8580c382026cb149c0a"><div class="ttname"><a href="a00045.html#abfc1d3799648f8580c382026cb149c0a">Vehicle::_Body</a></div><div class="ttdeci">QRectF _Body</div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00042">vehicle.hpp:42</a></div></div>
+<div class="ttc" id="aa00045_html_ac3b5ab4b7f102d1be8997bb8a2002d7f"><div class="ttname"><a href="a00045.html#ac3b5ab4b7f102d1be8997bb8a2002d7f">Vehicle::_LUWheel</a></div><div class="ttdeci">QRectF _LUWheel</div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00042">vehicle.hpp:42</a></div></div>
+<div class="ttc" id="aa00045_html_ad6b17cdc1bd5e28fa14b28f2b1b902eb"><div class="ttname"><a href="a00045.html#ad6b17cdc1bd5e28fa14b28f2b1b902eb">Vehicle::_RUWheel</a></div><div class="ttdeci">QRectF _RUWheel</div><div class="ttdef"><b>Definition:</b> <a href="a00005_source.html#l00042">vehicle.hpp:42</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_c6b7d079639c12219240c44dd9252ce4.html">maciej</a></li><li class="navelem"><a class="el" href="dir_405157e194464d873a2b3f2bbe150d22.html">Projects</a></li><li class="navelem"><a class="el" href="dir_6d522564296641ed022fd4386eb3fcc6.html">SerialSim</a></li><li class="navelem"><a class="el" href="dir_854d751a9764eb026b41dd1fa4dd6364.html">serial-sim</a></li><li class="navelem"><a class="el" href="dir_1f433a514157fddd1172eff08cc9d7f4.html">inc</a></li><li class="navelem"><a class="el" href="a00005.html">chartwindow.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_c6b7d079639c12219240c44dd9252ce4.html">maciej</a></li><li class="navelem"><a class="el" href="dir_405157e194464d873a2b3f2bbe150d22.html">Projects</a></li><li class="navelem"><a class="el" href="dir_6d522564296641ed022fd4386eb3fcc6.html">SerialSim</a></li><li class="navelem"><a class="el" href="dir_854d751a9764eb026b41dd1fa4dd6364.html">serial-sim</a></li><li class="navelem"><a class="el" href="dir_1f433a514157fddd1172eff08cc9d7f4.html">inc</a></li><li class="navelem"><a class="el" href="a00005.html">vehicle.hpp</a></li>
     <li class="footer">Wygenerowano przez <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>

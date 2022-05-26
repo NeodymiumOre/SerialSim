@@ -15,7 +15,7 @@ ChartWindow::~ChartWindow()
 
 void ChartWindow::beginPlot()
 {
-    Chart *chart = new Chart;
+    Chart *chart = new Chart(Qt::blue);
     chart->setTitle("Dynamic spline chart");
     chart->legend()->hide();
     chart->setAnimationOptions(QChart::AllAnimations);

@@ -69,6 +69,7 @@ private:
      *  aplikacją. Inicjalizowany w konstruktorze \link MainWindow::MainWindow() \endlink
      */
     QSerialPort *device;
+
     /*!
      * \brief Scena graficzna do wyświetlania symulowanego pojazdu.
      *
@@ -76,6 +77,13 @@ private:
      * pojazdu w oknie symulacji.
      */
     QGraphicsScene *scene;
+
+    /*!
+     * \brief Pojazd rysowany na scenie
+     *
+     * Wskaźnik na obiekt przechowujący dane o pojeździe wyświetlanym na scenie. Przechowuje
+     * wszystkie dane związane z jego wymiarami, położeniem oraz orientacją.
+     */
     QGraphicsItem *vehicle;
 
 private slots:
@@ -96,8 +104,6 @@ private slots:
      *  wyłuskuje potrzebne wartości i przekazuje je do wyświetlenia oraz dalszej analizy.
      */
     void readFromDevice();
-
-    void sceneSetup();
 
     /*!
      * \brief Metoda wyszukująca podłączone urządzenia w portch szeregowych.
@@ -125,11 +131,12 @@ private slots:
     void on_pushButtonDisconnect_clicked();
 
     /*!
-     * \brief Na razie nic nie robi xd
+     * \brief Metoda resetująca położenie pojazdu w oknie symulacji.
      *
-     * xdxd
+     * Przywraca domyślne położenie oraz orientację pojazdu w oknie symulacji. Oznacza to praktycznie
+     * przywrócenie wszystkich zmiennych i obiektów należących do klasy \link Vehicle \endlink do stanu początkowego.
      */
-    void on_pushButtonStart_clicked();
+    void on_pushButtonReset_clicked();
 
     /*!
      * \brief Metoda otwierająca okno zawierające wykresy odczytywanych wartości.

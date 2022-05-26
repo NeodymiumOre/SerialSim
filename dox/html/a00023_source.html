@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SerialSim: Plik źródłowy /home/maciej/Projects/SerialSim/serial-sim/src/chart.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">SerialSim<span id="projectnumber">&#160;0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.3 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Szukaj');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('a00023_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">chart.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="a00023.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="a00002.html">chart.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="a00033.html#a38b25f59311b03685cc59272312449a5">    3</a></span><a class="code hl_function" href="a00033.html#a38b25f59311b03685cc59272312449a5">Chart::Chart</a>(Qt::GlobalColor color, QGraphicsItem *parent, Qt::WindowFlags wFlags):</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    QChart(QChart::ChartTypeCartesian, parent, wFlags),</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    m_series(0),</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    m_axisX(new QValueAxis()),</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    m_axisY(new QValueAxis()),</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    m_x(1),</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    m_y(5),</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    x_range(10),</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    y_range(10)</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">// sender, signal, receiver, slot</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">// when timer times out, handleTimeout slot is activated</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    QObject::connect(&amp;<a class="code hl_variable" href="a00033.html#a0537ed43bfbba8ae3c90bd2fd01924e9">m_timer</a>, &amp;QTimer::timeout, <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="a00033.html#aba07859ccb2630218a1e1d7b90c3f38c">Chart::handleTimeout</a>);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// setting time between data points drawing (ms)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_variable" href="a00033.html#a0537ed43bfbba8ae3c90bd2fd01924e9">m_timer</a>.setInterval(1000);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">// creates new spline series</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_variable" href="a00033.html#a6dcaf24ec43e6521ba3046a98545b9a6">m_series</a> = <span class="keyword">new</span> QSplineSeries(<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// setting up line properties</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    QPen pen(color);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    pen.setWidth(3);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_variable" href="a00033.html#a6dcaf24ec43e6521ba3046a98545b9a6">m_series</a>-&gt;setPen(pen);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// adds the data point with the coordinates x and y to the series</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// in practice starts drawing line from (m_x, m_y)</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_variable" href="a00033.html#a6dcaf24ec43e6521ba3046a98545b9a6">m_series</a>-&gt;append(<a class="code hl_variable" href="a00033.html#a93459f511f9f0cc8d50a7b774964654d">m_x</a>, <a class="code hl_variable" href="a00033.html#a576e47d11c30ac5ea9d0898dfb622423">m_y</a>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// ???</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    addSeries(<a class="code hl_variable" href="a00033.html#a6dcaf24ec43e6521ba3046a98545b9a6">m_series</a>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// adding x and y axes</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    addAxis(<a class="code hl_variable" href="a00033.html#a904b9d3d310ab16b8a30ce5c6cdf0d41">m_axisX</a>,Qt::AlignBottom);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    addAxis(<a class="code hl_variable" href="a00033.html#ada33a056f4b5c944a4622f866fadd30e">m_axisY</a>,Qt::AlignLeft);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_variable" href="a00033.html#a6dcaf24ec43e6521ba3046a98545b9a6">m_series</a>-&gt;attachAxis(<a class="code hl_variable" href="a00033.html#a904b9d3d310ab16b8a30ce5c6cdf0d41">m_axisX</a>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_variable" href="a00033.html#a6dcaf24ec43e6521ba3046a98545b9a6">m_series</a>-&gt;attachAxis(<a class="code hl_variable" href="a00033.html#ada33a056f4b5c944a4622f866fadd30e">m_axisY</a>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// drawing 11 vertical lines in the plot area</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_variable" href="a00033.html#a904b9d3d310ab16b8a30ce5c6cdf0d41">m_axisX</a>-&gt;setTickCount(11);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// sets ranges for both axes</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_variable" href="a00033.html#a904b9d3d310ab16b8a30ce5c6cdf0d41">m_axisX</a>-&gt;setRange(0, <a class="code hl_variable" href="a00033.html#ab415ccddb305a152069efdb24b6c1523">x_range</a>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_variable" href="a00033.html#ada33a056f4b5c944a4622f866fadd30e">m_axisY</a>-&gt;setRange(0, <a class="code hl_variable" href="a00033.html#ada7897430fbc319e1021cb7d17b21170">y_range</a>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// starts timer count</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_variable" href="a00033.html#a0537ed43bfbba8ae3c90bd2fd01924e9">m_timer</a>.start();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="a00033.html#a8a593f9f79c94057718d1c4942e77f86">   52</a></span><a class="code hl_function" href="a00033.html#a8a593f9f79c94057718d1c4942e77f86">Chart::~Chart</a>()</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>{</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="a00033.html#aba07859ccb2630218a1e1d7b90c3f38c">   57</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="a00033.html#aba07859ccb2630218a1e1d7b90c3f38c">Chart::handleTimeout</a>()</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// calculating x axis shift in pixels</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    qreal x = plotArea().width() / (<a class="code hl_variable" href="a00033.html#a904b9d3d310ab16b8a30ce5c6cdf0d41">m_axisX</a>-&gt;tickCount()-1);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// calculating x xis shift in seconds</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    qreal y = (<a class="code hl_variable" href="a00033.html#a904b9d3d310ab16b8a30ce5c6cdf0d41">m_axisX</a>-&gt;max() - <a class="code hl_variable" href="a00033.html#a904b9d3d310ab16b8a30ce5c6cdf0d41">m_axisX</a>-&gt;min()) / (<a class="code hl_variable" href="a00033.html#a904b9d3d310ab16b8a30ce5c6cdf0d41">m_axisX</a>-&gt;tickCount() - 1);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// set next x value on the axis to draw on</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_variable" href="a00033.html#a93459f511f9f0cc8d50a7b774964654d">m_x</a> += y;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">// choosing new random value</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_variable" href="a00033.html#a576e47d11c30ac5ea9d0898dfb622423">m_y</a> = QRandomGenerator::global()-&gt;bounded(5);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// adding new value to the plot</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_variable" href="a00033.html#a6dcaf24ec43e6521ba3046a98545b9a6">m_series</a>-&gt;append(<a class="code hl_variable" href="a00033.html#a93459f511f9f0cc8d50a7b774964654d">m_x</a>, <a class="code hl_variable" href="a00033.html#a576e47d11c30ac5ea9d0898dfb622423">m_y</a>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// shifts the x axis if it is bigger then initial range</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="a00033.html#a93459f511f9f0cc8d50a7b774964654d">m_x</a> &gt; <a class="code hl_variable" href="a00033.html#ab415ccddb305a152069efdb24b6c1523">x_range</a>) scroll(x, 0);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="ttc" id="aa00002_html"><div class="ttname"><a href="a00002.html">chart.hpp</a></div><div class="ttdoc">Definicja klasy Chart.</div></div>
+<div class="ttc" id="aa00033_html_a0537ed43bfbba8ae3c90bd2fd01924e9"><div class="ttname"><a href="a00033.html#a0537ed43bfbba8ae3c90bd2fd01924e9">Chart::m_timer</a></div><div class="ttdeci">QTimer m_timer</div><div class="ttdoc">Obiekt timera.</div><div class="ttdef"><b>Definition:</b> <a href="a00002_source.html#l00073">chart.hpp:73</a></div></div>
+<div class="ttc" id="aa00033_html_a38b25f59311b03685cc59272312449a5"><div class="ttname"><a href="a00033.html#a38b25f59311b03685cc59272312449a5">Chart::Chart</a></div><div class="ttdeci">Chart(Qt::GlobalColor color=Qt::green, QGraphicsItem *parent=nullptr, Qt::WindowFlags wFlags={})</div><div class="ttdoc">Konstruktor obiektu klasy Chart.</div><div class="ttdef"><b>Definition:</b> <a href="a00023_source.html#l00003">chart.cpp:3</a></div></div>
+<div class="ttc" id="aa00033_html_a576e47d11c30ac5ea9d0898dfb622423"><div class="ttname"><a href="a00033.html#a576e47d11c30ac5ea9d0898dfb622423">Chart::m_y</a></div><div class="ttdeci">qreal m_y</div><div class="ttdoc">Współrzędna y kolejnego rysowanego punktu.</div><div class="ttdef"><b>Definition:</b> <a href="a00002_source.html#l00108">chart.hpp:108</a></div></div>
+<div class="ttc" id="aa00033_html_a6dcaf24ec43e6521ba3046a98545b9a6"><div class="ttname"><a href="a00033.html#a6dcaf24ec43e6521ba3046a98545b9a6">Chart::m_series</a></div><div class="ttdeci">QSplineSeries * m_series</div><div class="ttdoc">Wykres reprezentujący dane.</div><div class="ttdef"><b>Definition:</b> <a href="a00002_source.html#l00080">chart.hpp:80</a></div></div>
+<div class="ttc" id="aa00033_html_a8a593f9f79c94057718d1c4942e77f86"><div class="ttname"><a href="a00033.html#a8a593f9f79c94057718d1c4942e77f86">Chart::~Chart</a></div><div class="ttdeci">virtual ~Chart()</div><div class="ttdoc">Destruktor obiektu klasy Chart.</div><div class="ttdef"><b>Definition:</b> <a href="a00023_source.html#l00052">chart.cpp:52</a></div></div>
+<div class="ttc" id="aa00033_html_a904b9d3d310ab16b8a30ce5c6cdf0d41"><div class="ttname"><a href="a00033.html#a904b9d3d310ab16b8a30ce5c6cdf0d41">Chart::m_axisX</a></div><div class="ttdeci">QValueAxis * m_axisX</div><div class="ttdoc">Oś x wykresu.</div><div class="ttdef"><b>Definition:</b> <a href="a00002_source.html#l00087">chart.hpp:87</a></div></div>
+<div class="ttc" id="aa00033_html_a93459f511f9f0cc8d50a7b774964654d"><div class="ttname"><a href="a00033.html#a93459f511f9f0cc8d50a7b774964654d">Chart::m_x</a></div><div class="ttdeci">qreal m_x</div><div class="ttdoc">Współrzędna x kolejnego rysowanego punktu.</div><div class="ttdef"><b>Definition:</b> <a href="a00002_source.html#l00101">chart.hpp:101</a></div></div>
+<div class="ttc" id="aa00033_html_ab415ccddb305a152069efdb24b6c1523"><div class="ttname"><a href="a00033.html#ab415ccddb305a152069efdb24b6c1523">Chart::x_range</a></div><div class="ttdeci">qreal x_range</div><div class="ttdoc">Górny zakres osi x na początkowym wykresie.</div><div class="ttdef"><b>Definition:</b> <a href="a00002_source.html#l00115">chart.hpp:115</a></div></div>
+<div class="ttc" id="aa00033_html_aba07859ccb2630218a1e1d7b90c3f38c"><div class="ttname"><a href="a00033.html#aba07859ccb2630218a1e1d7b90c3f38c">Chart::handleTimeout</a></div><div class="ttdeci">void handleTimeout()</div><div class="ttdoc">Metoda aktualizująca dane prezentowane na wykresie.</div><div class="ttdef"><b>Definition:</b> <a href="a00023_source.html#l00057">chart.cpp:57</a></div></div>
+<div class="ttc" id="aa00033_html_ada33a056f4b5c944a4622f866fadd30e"><div class="ttname"><a href="a00033.html#ada33a056f4b5c944a4622f866fadd30e">Chart::m_axisY</a></div><div class="ttdeci">QValueAxis * m_axisY</div><div class="ttdoc">Oś y wykresu.</div><div class="ttdef"><b>Definition:</b> <a href="a00002_source.html#l00094">chart.hpp:94</a></div></div>
+<div class="ttc" id="aa00033_html_ada7897430fbc319e1021cb7d17b21170"><div class="ttname"><a href="a00033.html#ada7897430fbc319e1021cb7d17b21170">Chart::y_range</a></div><div class="ttdeci">qreal y_range</div><div class="ttdoc">Górny zakres osi y na początkowym wykresie.</div><div class="ttdef"><b>Definition:</b> <a href="a00002_source.html#l00122">chart.hpp:122</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_c6b7d079639c12219240c44dd9252ce4.html">maciej</a></li><li class="navelem"><a class="el" href="dir_405157e194464d873a2b3f2bbe150d22.html">Projects</a></li><li class="navelem"><a class="el" href="dir_6d522564296641ed022fd4386eb3fcc6.html">SerialSim</a></li><li class="navelem"><a class="el" href="dir_854d751a9764eb026b41dd1fa4dd6364.html">serial-sim</a></li><li class="navelem"><a class="el" href="dir_e12b08ada75c2c8bf947a3a5282551c2.html">src</a></li><li class="navelem"><a class="el" href="a00023.html">chart.cpp</a></li>
+    <li class="footer">Wygenerowano przez <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+  </ul>
+</div>
+</body>
+</html>

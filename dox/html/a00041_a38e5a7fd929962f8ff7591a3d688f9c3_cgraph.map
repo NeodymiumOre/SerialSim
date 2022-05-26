@@ -1,0 +1,4 @@
+<map id="MainWindow::on_pushButtonDisconnect_clicked" name="MainWindow::on_pushButtonDisconnect_clicked">
+<area shape="rect" id="node1" title="Metoda zamykająca wybrany port szeregowy." alt="" coords="5,5,216,47"/>
+<area shape="rect" id="node2" href="$a00041.html#a4d32584efa9a8d85570c911a76882c2e" title="Metoda wyświetlająca dane w obiekcie ui&#45;&gt;textEditLogs." alt="" coords="264,13,445,39"/>
+</map>

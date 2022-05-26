@@ -1,5 +1,7 @@
-<map id="/home/maciej/Projects/SerialSim/serial&#45;sim/inc/mainwindow.hpp" name="/home/maciej/Projects/SerialSim/serial&#45;sim/inc/mainwindow.hpp">
-<area shape="rect" id="node1" title="Definicja klasy MainWindow." alt="" coords="100,5,267,61"/>
-<area shape="rect" id="node2" href="$a00011.html" title=" " alt="" coords="5,109,172,165"/>
-<area shape="rect" id="node3" href="$a00014.html" title=" " alt="" coords="196,109,363,165"/>
+<map id="/home/maciej/Projects/SerialSim/serial&#45;sim/inc/chartwindow.hpp" name="/home/maciej/Projects/SerialSim/serial&#45;sim/inc/chartwindow.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="195,5,361,61"/>
+<area shape="rect" id="node2" href="$a00011.html" title="Definicja klasy MainWindow." alt="" coords="100,109,267,165"/>
+<area shape="rect" id="node5" href="$a00020.html" title=" " alt="" coords="291,109,457,165"/>
+<area shape="rect" id="node3" href="$a00014.html" title=" " alt="" coords="5,213,172,269"/>
+<area shape="rect" id="node4" href="$a00017.html" title=" " alt="" coords="196,213,363,269"/>
 </map>

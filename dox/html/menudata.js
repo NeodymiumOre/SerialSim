@@ -31,6 +31,7 @@ var menudata={children:[
 {text:"Hierarchia klas",url:"inherits.html"},
 {text:"Składowe klas",url:"functions.html",children:[
 {text:"Wszystko",url:"functions.html",children:[
+{text:"_",url:"functions.html#index__5F"},
 {text:"a",url:"functions.html#index_a"},
 {text:"b",url:"functions.html#index_b"},
 {text:"c",url:"functions.html#index_c"},
@@ -39,9 +40,13 @@ var menudata={children:[
 {text:"h",url:"functions.html#index_h"},
 {text:"m",url:"functions.html#index_m"},
 {text:"o",url:"functions.html#index_o"},
+{text:"p",url:"functions.html#index_p"},
 {text:"r",url:"functions.html#index_r"},
 {text:"s",url:"functions.html#index_s"},
 {text:"u",url:"functions.html#index_u"},
+{text:"v",url:"functions.html#index_v"},
+{text:"x",url:"functions.html#index_x"},
+{text:"y",url:"functions.html#index_y"},
 {text:"~",url:"functions.html#index__7E"}]},
 {text:"Funkcje",url:"functions_func.html"},
 {text:"Zmienne",url:"functions_vars.html"}]}]},

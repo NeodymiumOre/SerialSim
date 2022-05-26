@@ -1,6 +1,7 @@
 var annotated_dup =
 [
-    [ "Chart", "a00027.html", "a00027" ],
-    [ "ChartWindow", "a00031.html", "a00031" ],
-    [ "MainWindow", "a00035.html", "a00035" ]
+    [ "Chart", "a00033.html", "a00033" ],
+    [ "ChartWindow", "a00037.html", "a00037" ],
+    [ "MainWindow", "a00041.html", "a00041" ],
+    [ "Vehicle", "a00045.html", "a00045" ]
 ];

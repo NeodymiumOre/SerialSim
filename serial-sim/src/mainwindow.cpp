@@ -80,11 +80,6 @@ void MainWindow::readFromDevice()
         }
 }
 
-void MainWindow::sceneSetup()
-{
-    qDebug() << "xd";
-}
-
 void MainWindow::on_pushButtonSearch_clicked()
 {
     ui->comboBoxDevices->clear();
@@ -152,9 +147,9 @@ void MainWindow::on_pushButtonDisconnect_clicked()
     }
 }
 
-void MainWindow::on_pushButtonStart_clicked()
+void MainWindow::on_pushButtonReset_clicked()
 {
-    this->sceneSetup();
+    //this->sceneSetup();
 }
 
 void MainWindow::on_pushButtonCharts_clicked()

@@ -1,9 +1,8 @@
-<map id="/home/maciej/Projects/SerialSim/serial&#45;sim/inc/chartwindow.hpp" name="/home/maciej/Projects/SerialSim/serial&#45;sim/inc/chartwindow.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="111,5,278,61"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,109,80,136"/>
-<area shape="rect" id="node3" title=" " alt="" coords="105,109,183,136"/>
-<area shape="rect" id="node4" title=" " alt="" coords="208,109,283,136"/>
-<area shape="rect" id="node5" href="$a00002.html" title=" " alt="" coords="307,109,389,136"/>
-<area shape="rect" id="node6" title=" " alt="" coords="268,184,335,211"/>
-<area shape="rect" id="node7" title=" " alt="" coords="359,184,430,211"/>
+<map id="/home/maciej/Projects/SerialSim/serial&#45;sim/inc/vehicle.hpp" name="/home/maciej/Projects/SerialSim/serial&#45;sim/inc/vehicle.hpp">
+<area shape="rect" id="node1" title="Definicja klasy Vehicle." alt="" coords="256,5,423,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,109,124,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="149,109,277,136"/>
+<area shape="rect" id="node4" title=" " alt="" coords="301,109,378,136"/>
+<area shape="rect" id="node5" title=" " alt="" coords="403,109,511,136"/>
+<area shape="rect" id="node6" title=" " alt="" coords="535,109,603,136"/>
 </map>

@@ -1,12 +1,15 @@
 var hierarchy =
 [
     [ "QChart", null, [
-      [ "Chart", "a00027.html", null ]
+      [ "Chart", "a00033.html", null ]
     ] ],
     [ "QDialog", null, [
-      [ "ChartWindow", "a00031.html", null ]
+      [ "ChartWindow", "a00037.html", null ]
+    ] ],
+    [ "QGraphicsItem", null, [
+      [ "Vehicle", "a00045.html", null ]
     ] ],
     [ "QMainWindow", null, [
-      [ "MainWindow", "a00035.html", null ]
+      [ "MainWindow", "a00041.html", null ]
     ] ]
 ];
