@@ -29,6 +29,14 @@ void Vehicle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
     painter->drawRect(_RBWheel);
 }
 
+void Vehicle::calculatePositionSpeed(qreal angleY, qreal angleZ, qreal valueV)
+{
+    qDebug() << angleY << angleZ;
+
+    // first map angleY to v;
+    // then using trigonometry, and physics calculate x and y
+}
+
 
 
 //static qreal normalizeAngle(qreal angle)

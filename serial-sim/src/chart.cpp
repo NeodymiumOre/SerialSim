@@ -6,25 +6,28 @@ Chart::Chart(qreal *data, Qt::GlobalColor color,
     m_series(0),
     m_axisX(new QValueAxis()),
     m_axisY(new QValueAxis()),
-    m_x(1),
-    m_y(5),
-    x_range(10),
-    y_range(10),
+    m_x(0),
+    m_y(0),
+    x_range(100),
+    y_range(600),
     data(data)
 {
     // sender, signal, receiver, slot
-    // when timer times out, handleTimeout slot is activated
-    QObject::connect(&m_timer, &QTimer::timeout, this, &Chart::handleTimeout);
+    // when timer times out, addData slot is activated
+    QObject::connect(&add_timer, &QTimer::timeout, this, &Chart::addData);
+    // when timer times out, scrollArea slot is activated
+    QObject::connect(&scroll_timer, &QTimer::timeout, this, &Chart::scrollArea);
 
-    // setting time between data points drawing (ms)
-    m_timer.setInterval(1000);
+    // setting time between time interrupts (ms)
+    scroll_timer.setInterval(1000);
+    add_timer.setInterval(100);
 
     // creates new spline series
-    m_series = new QSplineSeries(this);
+    m_series = new QLineSeries(this);
 
     // setting up line properties
     QPen pen(color);
-    pen.setWidth(3);
+    pen.setWidth(2);
     m_series->setPen(pen);
 
     // adds the data point with the coordinates x and y to the series
@@ -42,13 +45,19 @@ Chart::Chart(qreal *data, Qt::GlobalColor color,
 
     // drawing 11 vertical lines in the plot area
     m_axisX->setTickCount(11);
+    m_axisY->setTickCount(13);
+
+    // setting axes labels
+    m_axisX->setTitleText("time [s]");
+    m_axisY->setTitleText("angular velocity [deg/s]");
 
     // sets ranges for both axes
     m_axisX->setRange(0, x_range);
-    m_axisY->setRange(0, y_range);
+    m_axisY->setRange(y_range*(-1), y_range);
 
-    // starts timer count
-    m_timer.start();
+    // starts timers count
+    add_timer.start();
+    scroll_timer.start();
 }
 
 Chart::~Chart()
@@ -56,21 +65,33 @@ Chart::~Chart()
 
 }
 
-void Chart::handleTimeout()
+void Chart::scrollArea()
 {
-    // calculating x axis shift in pixels
-    qreal x = plotArea().width() / (m_axisX->tickCount()-1);
-    // calculating x xis shift in seconds
-    qreal y = (m_axisX->max() - m_axisX->min()) / (m_axisX->tickCount() - 1);
+//    //
+//    qreal x = plotArea().width() / 10;
+//    //
+//    qreal y = 1;//(m_axisX->max() - m_axisX->min()) / (m_axisX->tickCount() - 1);
 
-    // set next x value on the axis to draw on
-    m_x += y;
+//    // set next x value on the axis to draw on
+//    //m_x += y;
 
-    // choosing new random value
-    m_y = QRandomGenerator::global()->bounded(5);
-    // adding new value to the plot
+//    // adding new value to the plot
+//    //m_series->append(m_x, *data);
+
+//    //
+//    if(m_x >= 0.9*x_range) scroll(x, 0);
+    qreal x = plotArea().width() / 100;
+    if(m_x >= 0.95*x_range) scroll(x, 0);
+}
+
+void Chart::addData()
+{
+    m_x += 0.1;
     m_series->append(m_x, *data);
+    *data = 0;
 
-    // shifts the x axis if it is bigger then initial range
-    if(m_x > x_range) scroll(x, 0);
+    //qreal x = plotArea().width() / 1000;
+    //if(m_x >= 0.9*x_range) scroll(x, 0);
+
+
 }

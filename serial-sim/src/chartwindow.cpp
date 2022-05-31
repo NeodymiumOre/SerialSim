@@ -18,14 +18,16 @@ ChartWindow::~ChartWindow()
 void ChartWindow::beginPlot()
 {
     Chart *chart = new Chart(this->Gy_raw, Qt::blue);
-    chart->setTitle("Dynamic spline chart");
+    chart->setTitle("Raw Gyroscope Y Value");
     chart->legend()->hide();
-    chart->setAnimationOptions(QChart::AllAnimations);
+    chart->setAnimationOptions(QChart::SeriesAnimations);
+    chart->setAnimationDuration(300);
     ui->graphicsViewGy->setChart(chart);
 
     Chart *chart2 = new Chart(this->Gz_raw, Qt::green);
-    chart2->setTitle("Dynamic spline chart");
+    chart2->setTitle("Raw Gyroscope Z Value");
     chart2->legend()->hide();
-    chart2->setAnimationOptions(QChart::AllAnimations);
+    chart2->setAnimationOptions(QChart::SeriesAnimations);
+    chart2->setAnimationDuration(300);
     ui->graphicsViewGz->setChart(chart2);
 }

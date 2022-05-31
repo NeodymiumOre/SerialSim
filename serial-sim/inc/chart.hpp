@@ -12,13 +12,14 @@
 #include <QChart>
 #include <QTimer>
 #include <QtCharts/QAbstractAxis>
-#include <QtCharts/QSplineSeries>
+#include <QtCharts/QLineSeries>
 #include <QtCharts/QValueAxis>
 #include <QtCore/QRandomGenerator>
 #include <QtCore/QDebug>
+#include <unistd.h>
 
 QT_BEGIN_NAMESPACE
-class QSplineSeries;
+class QLineSeries;
 class QValueAxis;
 QT_END_NAMESPACE
 
@@ -58,26 +59,40 @@ public:
 
 public slots:
     /*!
+     * \brief Metoda przesuwająca wykres
+     *
+     * Odpowiada za przesuwanie wykresu z biegiem czasu.
+     */
+    void scrollArea();
+
+    /*!
      * \brief Metoda aktualizująca dane prezentowane na wykresie.
      *
-     * Odpowiada za dopisywanie nowych danych do wykresu oraz za przesunięcia osi czasu.
+     * Odpowiada za dopisywanie nowych danych do wykresu.
      */
-    void handleTimeout();
+    void addData();
 
 private:
     /*!
-     * \brief Obiekt timera
+     * \brief Obiekt timera przesuwającego wykres
      *
-     * Odpowiada za podstawę czasu do przesuwania wykresów.
+     * Odpowiada za podstawę czasu do przesuwania wykresu.
      */
-    QTimer m_timer;
+    QTimer scroll_timer;
+
+    /*!
+     * \brief Obiekt timera dodającego dane
+     *
+     * Odpowiada za podstawę czasu do dodawania nowych pomiarów do wykresu.
+     */
+    QTimer add_timer;
 
     /*!
      * \brief Wykres reprezentujący dane
      *
      * Zawiera dane rysowane na wykresie w postaci zaokrąglanej linii.
      */
-    QSplineSeries *m_series;
+    QLineSeries *m_series;
 
     /*!
      * \brief Oś x wykresu
@@ -121,6 +136,12 @@ private:
      */
     qreal y_range;
 
+    /*!
+     * \brief Ostatni pomiar otrzymany z urządzenia
+     *
+     * Przechowuje ostatnią wartość odczytaną z czujnika. Metoda \link Chart::handleTimeout \endlink
+     * pobiera stąd wartość do wyświetlenia na wykresie.
+     */
     qreal *data;
 };
 

@@ -50,6 +50,8 @@ public:
      */
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
+    void calculatePositionSpeed(qreal angleY, qreal angleZ, qreal valueV);
+
 protected:
    // void advance(int step) override;
 
@@ -63,6 +65,8 @@ private:
      * koła (L - left, R - right, U - up, B - bottom).
      */
     QRectF _Body, _LUWheel, _LBWheel, _RUWheel, _RBWheel;
+
+    qreal x, y, v;
 };
 
 #endif // VEHICLE_HPP
