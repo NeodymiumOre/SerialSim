@@ -50,10 +50,8 @@ public:
      */
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
-    void calculatePositionSpeed(qreal angleY, qreal angleZ, qreal valueV);
-
 protected:
-   // void advance(int step) override;
+   void advance(int step) override;
 
 private:
 
@@ -64,9 +62,8 @@ private:
      * Obiekt _Body reprezentuje korpus pojazdu, natomiast pozostałe obiekty reprezentują
      * koła (L - left, R - right, U - up, B - bottom).
      */
-    QRectF _Body, _LUWheel, _LBWheel, _RUWheel, _RBWheel;
+    QRectF _Body, _LUWheel, _LBWheel, _RUWheel, _RBWheel, xd;
 
-    qreal x, y, v;
 };
 
 #endif // VEHICLE_HPP

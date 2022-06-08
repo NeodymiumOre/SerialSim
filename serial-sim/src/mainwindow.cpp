@@ -13,18 +13,30 @@ MainWindow::MainWindow(QWidget *parent):
     //scene setup
     this->scene = new QGraphicsScene(this);
     ui->graphicsViewPlane->setScene(scene);
+    this->scene->setSceneRect(-100, -100, 400, 400);
 
     // adding vehicle to the scene
     this->vehicle = new Vehicle();
     this->scene->addItem(this->vehicle);
-    connect(this, &MainWindow::analyzedDataAvailable, this, &MainWindow::print_values);
-    //connect(this, &MainWindow::analyzedDataAvailable, this->vehicle, &Vehicle::calculatePositionSpeed);
 
+    // setting up animation stuff
+    this->timer = new QTimeLine(100);
+    this->animation  = new QGraphicsItemAnimation;
+    this->animation->setItem(this->vehicle);
+    this->animation->setTimeLine(timer);
+    this->view = new QGraphicsView(this->scene);
+
+    // connecting signals and slots
+    connect(this, &MainWindow::analyzedDataAvailable, this, &MainWindow::print_values);
+    connect(this, &MainWindow::analyzedDataAvailable, this, &MainWindow::updateVehicleStatus);
+
+    // setting default values
     gyro_counter = 0;
     angleY = angleZ = valueV = 0;
     prev_time = curr_time = 0;
     gyroYcalli = gyroZcalli = 0;
     prev_GyrY_value = curr_GyrY_value = prev_GyrZ_value = curr_GyrZ_value = 0;
+    rot = 0;
 }
 
 MainWindow::~MainWindow()
@@ -103,13 +115,13 @@ void MainWindow::on_pushButtonDisconnect_clicked()
 
 void MainWindow::on_pushButtonReset_clicked()
 {
-    //this->sceneSetup();
+    this->animateVehicle(10, 10, 30);
 }
 
 void MainWindow::on_pushButtonCharts_clicked()
 {
     ChartWindow GyrXWin(&this->Gy_raw, &this->Gz_raw, nullptr);
-    GyrXWin.setModal(true);
+    GyrXWin.setModal(false);
 
     GyrXWin.beginPlot();
 
@@ -117,7 +129,7 @@ void MainWindow::on_pushButtonCharts_clicked()
     this->show();
 }
 
-void MainWindow::print_values(qreal angleY, qreal angleZ, qreal valueV)
+void MainWindow::print_values()
 {
     ui->textEditValueX->clear();
     ui->textEditValueX->append(QString::number(angleY));
@@ -126,6 +138,8 @@ void MainWindow::print_values(qreal angleY, qreal angleZ, qreal valueV)
     ui->textEditValueV->clear();
     ui->textEditValueV->append(QString::number(valueV));
 }
+
+//**************************************************************************************************
 
 void MainWindow::addToLogs(QString message)
 {
@@ -224,7 +238,7 @@ void MainWindow::readFromDevice()
 
             this->curr_GyrY_value = Gy;
             this->curr_GyrZ_value = Gz;
-            this->curr_time += 0.1;
+            //this->curr_time += 0.1;
             this->analyzeData();
         }
         else
@@ -237,19 +251,96 @@ void MainWindow::readFromDevice()
 void MainWindow::analyzeData()
 {
     // calculating angular displacement
-    this->angleY += 0.5*(this->curr_time-this->prev_time)*
+    this->angleY = 0.5*(0.1)*
             (this->curr_GyrY_value+this->prev_GyrY_value-2*this->gyroYcalli);
-    this->angleZ += 0.5*(this->curr_time-this->prev_time)*
+    this->angleZ = 0.5*(0.1)*
             (this->curr_GyrZ_value+this->prev_GyrZ_value-2*this->gyroZcalli);
 
     this->prev_GyrY_value = this->curr_GyrY_value;
     this->prev_GyrZ_value = this->curr_GyrZ_value;
-    this->prev_time += curr_time;
+    //this->prev_time = curr_time;
 
-    emit this->analyzedDataAvailable(this->angleY, this->angleZ, this->valueV);
-    vehicle->calculatePositionSpeed(this->angleY, this->angleZ, this->valueV);
+    emit this->analyzedDataAvailable();
+
+    // normalizing angles
+    this->normalizeAngle();
+    qDebug() << curr_GyrY_value << prev_GyrY_value << angleY << gyroYcalli;
+    //qDebug() << curr_GyrZ_value << prev_GyrZ_value << angleZ << gyroZcalli;
 }
 
+void MainWindow::normalizeAngle()
+{
+    qDebug() << "updatingxd xd";
+    //if(angleY > )
+}
+
+void MainWindow::angleToVelocity()
+{
+    qDebug() << "updatingxd xd";
+}
+
+void MainWindow::updateVehicleStatus()
+{
+    qDebug() << "updatingxd xd";
+}
+
+void MainWindow::animateVehicle(qreal x, qreal y, qreal angle)
+{
+    // variables for single step
+    qreal step_x, step_y, step_a;
+    step_x = step_y = step_a = 0;
+
+    for (int i = 0; i < 100; i++)
+    {
+        step_x += x/100.0;
+        step_y += y/100.0;
+        step_a += angle/100.0;
+        animation->setPosAt(i/100.0, QPointF(step_x,step_y) + this->vehicle->pos());
+        animation->setRotationAt(i/100.0, step_a + this->rot);
+    }
+
+    // setting number of frames
+    timer->setFrameRange(0, 100);
+    this->scene->update();
+    timer->start();
+
+    this->rot += angle;
+    if(this->rot > 360.0)
+        this->rot -= 360.0;
+}
+
+//void MainWindow::moveVehicle(qreal x, qreal y)
+//{
+//    qreal step_x, step_y;
+//    step_x = step_y = 0;
+
+//    //this->vehicle->moveBy(x, y);
+
+//    for (int i = 0; i < 10; i++)
+//        animation->setPosAt(i / 200.0, QPointF(i,i) + this->vehicle->pos());
+
+//    this->scene->update();
+//    timer->start();
+//}
+
+//void MainWindow::rotateVehicle(qreal angle)
+//{
+//////    QTransform trans(1, 1, 1, 1, 1, 11, 1, 1, 1);
+//////    this->vehicle->setTransform(trans);
+////    qDebug() << this->vehicle->rotation();
+////    this->vehicle->setTransformOriginPoint(QPoint(5,5));
+////    //this->vehicle->setPos(50,50);
+////    this->vehicle->setRotation(this->vehicle->rotation() + 45);
+////    qDebug() << this->vehicle->rotation() << "\n";
+////    this->vehicle->update();
+
+//    QGraphicsView *view = new QGraphicsView(scene);
+//    view->show();
+//    this->scene->update();
+
+//    timer->start();
+//    qDebug() << this->vehicle->boundingRect();
+//}
 
 
 

@@ -77,9 +77,10 @@ public:
     int gyro_counter;
 
     /*!
-     * \brief Skumulowane odchylenie kątowe dla obu osi
+     * \brief Chwilowe odchylenie kątowe dla obu osi
      *
-     * Przechowują wartości skumulowanego odchylenia kątowego dla obu osi żyroskopu.
+     * Przechowują wartości chwilowego (wyznaczonego na podstawie jednego pomiaru)
+     * odchylenia kątowego dla obu osi żyroskopu.
      */
     qreal angleY, angleZ;
 
@@ -123,6 +124,13 @@ public:
      */
     qreal prev_GyrZ_value, curr_GyrZ_value;
 
+    qreal norm_Y_rad, norm_Z_rad;
+
+    QTimeLine *timer;
+    QGraphicsItemAnimation *animation;
+    QGraphicsView *view;
+    qreal rot;
+
 signals:
 
     /*!
@@ -131,7 +139,7 @@ signals:
      * Przechowują wartości dryfu żyroskopu w obu osiach. Używane są w metodach
      * \link MainWindow::callibrateGyroscope \endlink
      */
-    void analyzedDataAvailable(qreal angleY, qreal angleZ, qreal valueV);
+    void analyzedDataAvailable();
 
 private:
 
@@ -161,8 +169,7 @@ private:
     /*!
      * \brief Pojazd rysowany na scenie
      *
-     * Wskaźnik na obiekt przechowujący dane o pojeździe wyświetlanym na scenie. Przechowuje
-     * wszystkie dane związane z jego wymiarami, położeniem oraz orientacją.
+     * Wskaźnik na obiekt przechowujący obiekt pojazdu.
      */
     Vehicle *vehicle;
 
@@ -211,7 +218,7 @@ private slots:
      */
     void on_pushButtonCharts_clicked();
 
-    void print_values(qreal angleY, qreal angleZ, qreal valueV);
+    void print_values();
 
     //************************ LOGIC SECTION ************************
 
@@ -251,5 +258,18 @@ private slots:
      */
     void analyzeData();
 
+    void normalizeAngle();
+
+    void angleToVelocity();
+
+    void updateVehicleStatus();
+
+    void animateVehicle(qreal x, qreal y, qreal angle);
+
+//    void moveVehicle(qreal x, qreal y);
+
+//    void rotateVehicle(qreal angle);
+
 };
+
 #endif // MAINWINDOW_HPP
