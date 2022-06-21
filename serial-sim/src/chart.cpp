@@ -48,8 +48,8 @@ Chart::Chart(qreal *data, Qt::GlobalColor color,
     m_axisY->setTickCount(13);
 
     // setting axes labels
-    m_axisX->setTitleText("time [s]");
-    m_axisY->setTitleText("angular velocity [deg/s]");
+    m_axisX->setTitleText(tr("czas [s]"));
+    m_axisY->setTitleText(tr("prędkość kątowa [st/s]"));
 
     // sets ranges for both axes
     m_axisX->setRange(0, x_range);

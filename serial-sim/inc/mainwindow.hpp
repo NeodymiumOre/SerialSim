@@ -17,6 +17,7 @@
 #include <QSerialPort>
 #include <QGraphicsView>
 #include <QDebug>
+#include <QTranslator>
 
 #include "chartwindow.hpp"
 #include "vehicle.hpp"
@@ -124,12 +125,21 @@ public:
      */
     qreal prev_GyrZ_value, curr_GyrZ_value;
 
-    qreal norm_Y_rad, norm_Z_rad;
-
+    /*!
+     * \brief Timer obsługujący animację
+     *
+     * Timer służy do obsugi animacji ruchu pojazdu. Animowane jest przemieszczenie
+     * w osiach x i y oraz obrót.
+     */
     QTimeLine *timer;
+
+
     QGraphicsItemAnimation *animation;
     QGraphicsView *view;
     qreal rot;
+    qreal globalX, globalY, globalZ, _globalX, _globalY, _globalZ;
+
+    virtual void changeEvent(QEvent *event) override;
 
 signals:
 
@@ -218,6 +228,8 @@ private slots:
      */
     void on_pushButtonCharts_clicked();
 
+    void on_pushButtonTranslate_clicked();
+
     void print_values();
 
     //************************ LOGIC SECTION ************************
@@ -262,13 +274,19 @@ private slots:
 
     void angleToVelocity();
 
+    /*!
+     * \brief Metoda wywołująca rysowanie pojazdu po każdym odczytaniu danych
+     *
+     *
+     */
     void updateVehicleStatus();
 
+    /*!
+     * \brief Metoda tworząca animację ruchu pojazdu o zadany kąt lub do zadanej pozycji.
+     *
+     *
+     */
     void animateVehicle(qreal x, qreal y, qreal angle);
-
-//    void moveVehicle(qreal x, qreal y);
-
-//    void rotateVehicle(qreal angle);
 
 };
 

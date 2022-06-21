@@ -18,14 +18,14 @@ ChartWindow::~ChartWindow()
 void ChartWindow::beginPlot()
 {
     Chart *chart = new Chart(this->Gy_raw, Qt::blue);
-    chart->setTitle("Raw Gyroscope Y Value");
+    chart->setTitle(tr("Surowe odczyt żyroskopu osi Y"));
     chart->legend()->hide();
     chart->setAnimationOptions(QChart::SeriesAnimations);
     chart->setAnimationDuration(300);
     ui->graphicsViewGy->setChart(chart);
 
     Chart *chart2 = new Chart(this->Gz_raw, Qt::green);
-    chart2->setTitle("Raw Gyroscope Z Value");
+    chart2->setTitle(tr("Surowe odczyt żyroskopu osi Z"));
     chart2->legend()->hide();
     chart2->setAnimationOptions(QChart::SeriesAnimations);
     chart2->setAnimationDuration(300);
